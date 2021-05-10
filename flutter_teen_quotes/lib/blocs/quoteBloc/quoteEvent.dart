@@ -12,11 +12,11 @@ class FetchQuote extends QuoteEvent{
 }
 
 class FetchQuoteByTag extends QuoteEvent{
-  final _tag;
-  FetchQuoteByTag(this._tag);
+  final tag;
+  FetchQuoteByTag(this.tag);
 
   @override
   // TODO: implement props
-  List<Object> get props => [_tag];
+  List<Object> get props => [tag];
 }
 

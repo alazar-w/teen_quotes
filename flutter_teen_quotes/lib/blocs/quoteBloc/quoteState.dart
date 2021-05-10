@@ -7,6 +7,8 @@ class QuoteState extends Equatable{
   List<Object> get props => [];
 }
 
+class InitialState extends QuoteState{}
+
 class QuoteIsLoading extends QuoteState{
 }
 
@@ -23,3 +25,4 @@ class QuoteIsLoaded extends QuoteState{
 }
 
 class QuoteIsNotLoaded extends QuoteState{}
+
