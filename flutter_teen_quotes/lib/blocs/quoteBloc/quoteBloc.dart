@@ -8,7 +8,7 @@ import 'package:flutter_teen_quotes/repository/quoteRepository.dart';
 class QuoteBloc extends Bloc<QuoteEvent,QuoteState>{
   QuoteRepository quoteRepository;
 
-  QuoteBloc(this.quoteRepository) : super(InitialState());
+  QuoteBloc(this.quoteRepository) : super(QuoteIsLoading());
 
 
 
@@ -17,16 +17,16 @@ class QuoteBloc extends Bloc<QuoteEvent,QuoteState>{
     // TODO: implement mapEventToState
     if(event is FetchQuoteByTag){
       try{
-        QuoteModel quote = await quoteRepository.getQuoteByTag(event.tag);
+        List<QuoteModel> quote = await quoteRepository.getQuotesByTag(event.tag);
         yield QuoteIsLoaded(quote);
 
       }catch(_) {
         yield QuoteIsNotLoaded();
       }
-    }else if(event is InitialState){
+    }else if(event is FetchQuote){
       yield QuoteIsLoading();
       try{
-        QuoteModel quote = await quoteRepository.getQuote();
+        List<QuoteModel> quote = await quoteRepository.getQuotes();
         yield QuoteIsLoaded(quote);
 
       }catch(_) {
