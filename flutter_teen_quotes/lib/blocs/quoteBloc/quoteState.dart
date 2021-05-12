@@ -7,20 +7,19 @@ class QuoteState extends Equatable{
   List<Object> get props => [];
 }
 
-class InitialState extends QuoteState{}
 
 class QuoteIsLoading extends QuoteState{
 }
 
 class QuoteIsLoaded extends QuoteState{
-  final _quote;
+  final List<QuoteModel> _quotes;
 
-  QuoteIsLoaded(this._quote);
-  QuoteModel get getQuote => _quote;
+  QuoteIsLoaded(this._quotes);
+  List<QuoteModel> get getQuotes => _quotes;
 
   @override
   // TODO: implement props
-  List<Object> get props => [_quote];
+  List<Object> get props => [_quotes];
 
 }
 

@@ -1,23 +1,27 @@
 class QuoteModel {
-  int id;
+  String id;
   String quote;
-  String author;
+  String quote_writer;
   String tag;
-  int numberOfLikes;
-  bool isEnabled;
+  String like;
+  String isEnabled;
 
-  QuoteModel({this.id ,this.quote,this.author,this.tag,this.numberOfLikes,this.isEnabled});
+  QuoteModel({this.id ,this.quote,this.quote_writer,this.tag,this.like,this.isEnabled});
 
   factory QuoteModel.fromJson(Map<String,dynamic> json){
-    return QuoteModel(
+    var a =  QuoteModel(
       id: json['id'],
       quote: json['quote'],
-      author: json['author'],
+      quote_writer: json['quote_writer'],
       tag: json['tag'],
-      numberOfLikes: json['numberOfLikes'],
-      isEnabled: json['isEnabled']
+      like: json['like'],
+      isEnabled: json['enable']
     );
+
+    return a;
   }
+
+
 
 
 }
