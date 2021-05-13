@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_teen_quotes/blocs/quoteBloc/quote.dart';
+import 'package:flutter_teen_quotes/blocs/blocs.dart';
 import 'package:flutter_teen_quotes/models/QuoteModel.dart';
 import 'package:flutter_teen_quotes/repository/quoteRepository.dart';
 

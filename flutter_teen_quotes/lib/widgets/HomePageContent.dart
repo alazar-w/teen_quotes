@@ -42,9 +42,6 @@ import 'package:flutter_teen_quotes/models/QuoteModel.dart';
 
 
 Widget homePageContent(List<QuoteModel> quotes) {
-
-
-
   return Expanded(
     child: ListView.builder(
       itemCount: quotes.length,
