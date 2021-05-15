@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_teen_quotes/blocs/quoteBloc/quote.dart';
+import 'package:flutter_teen_quotes/blocs/blocs.dart';
 import 'package:flutter_teen_quotes/repository/quoteRepository.dart';
-import 'package:flutter_teen_quotes/screens/HomePage.dart';
-import 'package:flutter_teen_quotes/widgets/widgets.dart';
+import 'package:flutter_teen_quotes/screens/screens.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  runApp(
+    BlocProvider(create: (BuildContext context) => QuoteBloc(QuoteRepository())..add(FetchQuote()),
+    child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -15,19 +16,14 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false ,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Teen Quote"),
-        ),
-        body: BlocProvider(
-            create: (BuildContext context) => QuoteBloc(QuoteRepository())..add(FetchQuote()),
-            child: HomePage()
-        ),
+      initialRoute: '/splash',
+      routes: {
+        '/splash':(context) => SplashScreen(),
+        '/home': (context) => HomePage(),
+//        '/details': (context) => DetailsPage(),
+      },
 
-        drawer: Drawer(
-          child:drawerContent(context)
-        ), //this will just add the Navigation Drawer  Icon
-      ),
+
     );
   }
 
