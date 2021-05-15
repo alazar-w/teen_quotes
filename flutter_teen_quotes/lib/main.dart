@@ -4,8 +4,10 @@ import 'package:flutter_teen_quotes/blocs/blocs.dart';
 import 'package:flutter_teen_quotes/repository/quoteRepository.dart';
 import 'package:flutter_teen_quotes/screens/screens.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  runApp(
+    BlocProvider(create: (BuildContext context) => QuoteBloc(QuoteRepository())..add(FetchQuote()),
+    child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,13 +16,14 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false ,
-      home: Scaffold(
-        body: BlocProvider(
-            create: (BuildContext context) => QuoteBloc(QuoteRepository())..add(FetchQuote()),
-            child: SplashScreen()
-        ),
+      initialRoute: '/splash',
+      routes: {
+        '/splash':(context) => SplashScreen(),
+        '/home': (context) => HomePage(),
+//        '/details': (context) => DetailsPage(),
+      },
 
-      ),
+
     );
   }
 

@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final quoteBloc = BlocProvider.of<QuoteBloc>(context);
 
     return MaterialApp(
       debugShowCheckedModeBanner: false ,
@@ -23,16 +22,17 @@ class HomePage extends StatelessWidget {
         ),
         body: Column(
           children: [
-//            BlocListener<QuoteBloc, QuoteState>(listener: (context, state) {
-//              if (state is QuoteIsLoaded) {
-                 homePageContent(quote)
-//              }
-//              return Container(
-//                child: Center(
-//                  child: Text("Error Loading Data"),
-//                ),
-//              );
-//            }),
+            BlocBuilder<QuoteBloc, QuoteState>(builder: (context, state) {
+              if (state is QuoteIsLoaded) {
+                print("comes here:HOME PAGE: " + state.getQuotes[1].quote.toString());
+                 return homePageContent(state.getQuotes);
+              }
+              return Container(
+                child: Center(
+                  child: Text("Error Loading Data"),
+                ),
+              );
+            }),
 
           ],
         ),
